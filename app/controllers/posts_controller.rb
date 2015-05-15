@@ -10,10 +10,9 @@ class PostsController < ApplicationController
     @subs = Sub.all
     @post = Post.new(post_params)
     @post.author_id = current_user.id
-
     if @post.save
       flash[:success] = "Post created!"
-      redirect_to sub_url(@post.sub_id)
+      redirect_to subs_url
     else
       flash[:error] = @post.errors.full_messages
       render :new
@@ -31,7 +30,7 @@ class PostsController < ApplicationController
 
     if @post.update(post_params)
       flash[:success] = "Post updated!"
-      redirect_to sub_url(@post.sub_id)
+      redirect_to subs_url
     else
       flash[:error] = @post.errors.full_messages
       render :edit
@@ -56,6 +55,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :url, :content, :sub_id)
+    params.require(:post).permit(:title, :url, :content, sub_ids: [])
   end
 end
