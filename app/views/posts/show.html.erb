@@ -1,0 +1,5 @@
+<h1><%= @post.title %></h1>
+<h3>Posted by <%= @post.author.username %>
+      <%= time_ago_in_words(@post.created_at) %> ago.</h3>
+<h5>URL: <%= @post.url.blank? ? "No url given" : @post.url  %></h5>
+<p>Content: <%= @post.content.blank? ? "No post content" : @post.content %></p>

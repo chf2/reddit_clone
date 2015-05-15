@@ -1,0 +1,7 @@
+<h1>Create Post</h1>
+
+<%= render "form", action: posts_url,
+                   request_type: "POST",
+                   post: @post,
+                   subs: @subs,
+                   submit_value: "Create Post" %>

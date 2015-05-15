@@ -29,7 +29,7 @@ class SubsController < ApplicationController
   end
 
   def show
-    @sub = Sub.find(params[:id])
+    @sub = Sub.where(id: params[:id]).includes(:posts).first
   end
 
   def edit

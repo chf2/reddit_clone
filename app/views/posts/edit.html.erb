@@ -1,0 +1,7 @@
+<h1>Edit Post</h1>
+
+<%= render "form", action: post_url(@post),
+                   request_type: "PATCH",
+                   post: @post,
+                   subs: @subs,
+                   submit_value: "Edit Post" %>
