@@ -4,5 +4,9 @@
   <small><%= time_ago_in_words(comment.created_at) %> ago.</small>
 </li>
 <ul>
-  <%= render comment.child_comments %>
+  <% @comments.each do |c2| %>
+    <% next if c2.parent_comment_id != comment.id %>
+    <%= render c2 %>
+    <br>
+  <% end %>
 </ul>

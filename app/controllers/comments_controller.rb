@@ -18,6 +18,7 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
+    @comments = @comment.child_comments
   end
 
   private

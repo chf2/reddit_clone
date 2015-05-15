@@ -5,9 +5,11 @@
 <p>Content: <%= @post.content.blank? ? "No post content" : @post.content %></p>
 
 <h3>Comments</h3>
-<% @top_level_comments.each_with_index do |comment, index| %>
-  <br>
+<br>
+<% @comments.each do |comment| %>
+  <% next if comment.parent_comment_id != nil %>
   <%= render comment %>
+  <br>
 <% end %>
 
 <%= button_to "Add comment", new_post_comment_url(@post), method: :get %>
