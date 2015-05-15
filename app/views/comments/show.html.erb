@@ -1,0 +1,11 @@
+<%= render @comment %>
+
+<br>Reply to this comment:<br>
+<form action="<%= comments_url %>" method="POST">
+  <%= auth_token %>
+  <input type="hidden" name="comment[post_id]" value="<%= @comment.post_id %>">
+  <input type="hidden" name="comment[parent_comment_id]" value="<%= @comment.id %>">
+
+  <textarea name="comment[content]"></textarea><br>
+  <input type="submit" value="Post Comment">
+</form>

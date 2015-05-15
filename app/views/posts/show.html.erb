@@ -3,3 +3,11 @@
       <%= time_ago_in_words(@post.created_at) %> ago.</h3>
 <h5>URL: <%= @post.url.blank? ? "No url given" : @post.url  %></h5>
 <p>Content: <%= @post.content.blank? ? "No post content" : @post.content %></p>
+
+<h3>Comments</h3>
+<% @top_level_comments.each_with_index do |comment, index| %>
+  <br>
+  <%= render comment %>
+<% end %>
+
+<%= button_to "Add comment", new_post_comment_url(@post), method: :get %>

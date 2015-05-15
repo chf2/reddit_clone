@@ -1,0 +1,8 @@
+<h1>Comments</h1>
+<form action="<%= comments_url %>" method="POST">
+  <%= auth_token %>
+  <input type="hidden" name="comment[post_id]" value="<%= @post_id %>">
+
+  <textarea name="comment[content]"></textarea><br>
+  <input type="submit" value="Post Comment">
+</form>
