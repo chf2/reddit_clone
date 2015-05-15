@@ -1,6 +1,13 @@
 class SubsController < ApplicationController
+  before_action :validate_permissions, only: [:edit, :update]
+
+  def validate_permissions
+    sub = Sub.find(params[:id])
+    redirect_to subs_url unless logged_in? && current_user.id == sub.moderator_id
+  end
+
   def index
-    @subs = Sub.all
+    @subs = Sub.includes(:moderator)
     render :index
   end
 
