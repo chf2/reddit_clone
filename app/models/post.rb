@@ -18,4 +18,12 @@ class Post < ActiveRecord::Base
   has_many :post_subs, inverse_of: :post
   has_many :subs, through: :post_subs
   has_many :comments
+
+  def comments_by_parent_id
+    comments_hash = Hash.new { |h, k| h[k] = Array.new }
+    comments.each do |comment|
+      comments_hash[comment.parent_comment_id] << comment
+    end
+    comments_hash
+  end
 end

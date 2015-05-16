@@ -39,7 +39,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments.includes(:author)
+    @comments = @post.comments_by_parent_id
   end
 
   def destroy

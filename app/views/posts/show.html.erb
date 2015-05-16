@@ -6,8 +6,7 @@
 
 <h3>Comments</h3>
 <br>
-<% @comments.each do |comment| %>
-  <% next if comment.parent_comment_id != nil %>
+<% @comments[nil].each do |comment| %>
   <%= render comment %>
   <br>
 <% end %>
