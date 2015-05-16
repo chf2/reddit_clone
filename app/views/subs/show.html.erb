@@ -2,4 +2,4 @@
 <h2><%= @sub.description %></h2>
 <p>Moderated by: <%= @sub.moderator.username %></p>
 
-<%= render @sub.posts %>
+<%= render @sub.posts.sort { |post| post.score }.reverse %>

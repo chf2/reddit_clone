@@ -12,12 +12,16 @@
 #
 
 class Post < ActiveRecord::Base
+  include Votable
+
   validates :title, :author_id, presence: true
 
   belongs_to :author, class_name: "User"
   has_many :post_subs, inverse_of: :post
   has_many :subs, through: :post_subs
   has_many :comments
+
+  after_touch :score
 
   def comments_by_parent_id
     comments_hash = Hash.new { |h, k| h[k] = Array.new }
@@ -26,4 +30,6 @@ class Post < ActiveRecord::Base
     end
     comments_hash
   end
+
+
 end
